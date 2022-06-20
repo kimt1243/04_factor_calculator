@@ -58,14 +58,15 @@ def num_check(question):
 # gets factors, returns a sorted list
 def get_factors(x):
 
-    factors = []
-
+    factors_list = []
+    
     print("The factors of",x,"are: ")
     for i in range(1, x + 1):
         if x % i == 0:
+            factors_list.append(i)
             print()
-            factors.append(i)
-            return factors
+    factors_list.sort()
+    return(factors_list)
 
 
 # Heading
@@ -87,19 +88,16 @@ while keep_going == "":
     var_to_factor = num_check("Number? ")
 
     if var_to_factor != 1:
-        factor_list = get_factors(var_to_factor)
+        factors_list = get_factors(var_to_factor)
     else:
         comment = "One is UNITY! It only has one factor.  Itself :)"
-        factor_list = ""
-
-    # comments for squares / primes
-    if len(factor_list) == 2:
+       
+    if len(factors_list) == 2:
         comment = "{} is a prime number.".format(var_to_factor)
-        factor_list = ""
-
-    elif len(factor_list) % 2 == 1:
+      
+    elif len(factors_list) % 2 == 1:
         comment = "{} is a perfect square".format(var_to_factor)
-        factor_list = ""
+        
         
         
     # ouput factors and comment
@@ -114,7 +112,7 @@ while keep_going == "":
     # Output factors and comment
     statement_generator(heading, "*")
     print()
-    print(factor_list)
+    print(factors_list)
     print(comment)
 
     print()
